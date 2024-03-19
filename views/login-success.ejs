@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Sucesso</title>
+</head>
+<body>
+    <h1>Login bem-sucedido!</h1>
+    <p>Seja bem-vindo! Você realizou o login com sucesso.</p>
+    <button id="logout-btn">Voltar para a página de login</button> 
+
+    <script>
+        document.getElementById('logout-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do botão
+            fetch('/logout', { method: 'GET' }) // Envia uma solicitação GET para /logout
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/login'; // Redireciona para a página de login após o logout
+                }
+            })
+            .catch(error => console.error('Erro ao fazer logout:', error));
+        });
+    </script>
+</body>
+</html>
